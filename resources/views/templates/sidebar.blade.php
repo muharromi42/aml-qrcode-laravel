@@ -45,7 +45,7 @@
                 <ul class="menu">
                     <li class="sidebar-title">Menu</li>
 
-                    <li class="sidebar-item active ">
+                    <li class="sidebar-item {{ Request::routeIs('dashboard.index') ? 'active' : '' }} ">
                         <a href="{{ route('dashboard.index') }}" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
                             <span>Dashboard</span>
@@ -54,7 +54,8 @@
 
                     </li>
 
-                    <li class="sidebar-item  has-sub">
+                    <li
+                        class="sidebar-item  has-sub {{ Request::routeIs('baju.index') || Request::routeIs('celana.index') || Request::routeIs('sepatu.index') || Request::routeIs('makeup.index') ? 'active' : '' }}">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-box-seam"></i>
                             <span>Stok Barang</span>
@@ -62,22 +63,22 @@
 
                         <ul class="submenu ">
 
-                            <li class="submenu-item  ">
+                            <li class="submenu-item  {{ Request::routeIs('baju.index') ? 'active' : '' }}">
                                 <a href="{{ route('baju.index') }}" class="submenu-link">Baju</a>
 
                             </li>
 
-                            <li class="submenu-item  ">
+                            <li class="submenu-item  {{ Request::routeIs('celana.index') ? 'active' : '' }}">
                                 <a href="component-alert.html" class="submenu-link">Celana</a>
 
                             </li>
 
-                            <li class="submenu-item  ">
+                            <li class="submenu-item  {{ Request::routeIs('sepatu.index') ? 'active' : '' }}">
                                 <a href="component-badge.html" class="submenu-link">Sepatu</a>
 
                             </li>
 
-                            <li class="submenu-item  ">
+                            <li class="submenu-item  {{ Request::routeIs('makeup.index') ? 'active' : '' }}">
                                 <a href="component-breadcrumb.html" class="submenu-link">Make Up</a>
 
                             </li>
@@ -124,7 +125,7 @@
 
                     </li>
 
-                    <li class="sidebar-item ">
+                    <li class="sidebar-item {{ Request::routeIs('qrcode.index') ? 'active' : '' }}">
                         <a href="{{ route('qrcode.index') }}" class='sidebar-link'>
                             <i class="bi bi-qr-code-scan"></i>
                             <span>Generate Qr Code</span>
