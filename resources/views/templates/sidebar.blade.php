@@ -63,8 +63,8 @@
 
                         <ul class="submenu ">
 
-                            <li class="submenu-item  {{ Request::routeIs('baju.index') ? 'active' : '' }}">
-                                <a href="{{ route('baju.index') }}" class="submenu-link">Baju</a>
+                            <li class="submenu-item  {{ Request::routeIs('jenisbarang.index') ? 'active' : '' }}">
+                                <a href="{{ route('jenisbarang.index') }}" class="submenu-link">Jenis Barang</a>
 
                             </li>
 

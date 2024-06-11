@@ -18,6 +18,9 @@
     <link rel="stylesheet" crossorigin href="/template/dist/assets/compiled/css/app.css">
     <link rel="stylesheet" crossorigin href="/template/dist/assets/compiled/css/app-dark.css">
     <link rel="stylesheet" crossorigin href="/template/dist/assets/compiled/css/iconly.css">
+
+    {{-- jquery --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
