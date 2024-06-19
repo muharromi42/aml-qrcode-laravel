@@ -28,36 +28,6 @@
 
                             </tbody>
                         </table>
-                        <script type="text/javascript">
-                            $(function() {
-                                var table = $('#table-1').DataTable({
-                                    processing: true,
-                                    serverSide: true,
-                                    scrollX: true,
-                                    ajax: "{{ route('jenisbarang.index') }}",
-                                    columns: [{
-                                            data: 'DT_RowIndex',
-                                            name: 'DT_RowIndex',
-                                            searchable: false
-                                        },
-                                        {
-                                            data: 'kategori',
-                                            name: 'kategori'
-                                        },
-                                        {
-                                            data: 'catatan',
-                                            name: 'catatan'
-                                        },
-                                        {
-                                            data: 'action',
-                                            name: 'action',
-                                            orderable: false,
-                                            searchable: false
-                                        }
-                                    ]
-                                });
-                            });
-                        </script>
                     </div>
                 </div>
             </div>
@@ -66,4 +36,105 @@
         <!-- Basic Tables end -->
     </div>
     @include('jenisbarangs.create')
+    {{-- @include('jenisbarangs.edit') --}}
+
+    @push('scripts')
+        <script type="text/javascript">
+            $(function() {
+                var table = $('#table-1').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    scrollX: true,
+                    ajax: "{{ route('jenisbarang.index') }}",
+                    columns: [{
+                            data: 'DT_RowIndex',
+                            name: 'DT_RowIndex',
+                            searchable: false
+                        },
+                        {
+                            data: 'kategori',
+                            name: 'kategori'
+                        },
+                        {
+                            data: 'catatan',
+                            name: 'catatan'
+                        },
+                        {
+                            data: 'action',
+                            name: 'action',
+                            orderable: false,
+                            searchable: false
+                        }
+                    ]
+                });
+            });
+
+            @if (session('success'))
+                Swal.fire({
+                    title: 'Success!',
+                    text: "{{ session('success') }}",
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            @endif
+
+            // $('#table-1').on('click', '.edit-btn', function() {
+            //     var id = $(this).data('id');
+            //     $.get('jenisbarang/' + id + '/edit', function(data) {
+            //         $('#editjenisbarang form').attr('action', 'jenisbarang/' + id);
+            //         $('#editjenisbarang #kategori').val(data.kategori);
+            //         $('#editjenisbarang #catatan').val(data.catatan);
+            //         $('#editjenisbarang').modal('show');
+            //     });
+            // });
+
+
+            // function openEditModal(id) {
+            //     $.get("{{ url('jenisbarang') }}/" + id + "/edit", function(data) {
+            //         $('#editId').val(data.id);
+            //         $('#editName').val(data.name);
+            //         $('#editDescription').val(data.description);
+            //         $('#editForm').attr('action', "{{ url('jenisbarang') }}/" + id);
+            //         $('#editjenisbarang').modal('show');
+            //     })
+            // }
+
+            // $('#saveChanges').on('click', function() {
+            //     var form = $('#editForm');
+            //     var id = $('#editId').val();
+            //     var url = "{{ url('jenisbarang') }}/" + id;
+
+            //     $.ajax({
+            //         url: url,
+            //         type: 'PUT',
+            //         data: form.serialize(),
+            //         success: function(response) {
+            //             $('#editjenisbarang').modal('hide');
+            //             table.ajax.reload();
+            //             Swal.fire({
+            //                 title: 'Success!',
+            //                 text: response.success,
+            //                 icon: 'success',
+            //                 confirmButtonText: 'OK'
+            //             });
+            //         },
+            //         error: function(xhr) {
+            //             var errors = xhr.responseJSON.errors;
+            //             var errorMessage = '';
+
+            //             $.each(errors, function(key, value) {
+            //                 errorMessage += value + '<br>';
+            //             });
+
+            //             Swal.fire({
+            //                 title: 'Error!',
+            //                 html: errorMessage,
+            //                 icon: 'error',
+            //                 confirmButtonText: 'OK'
+            //             });
+            //         }
+            //     });
+            // });
+        </script>
+    @endpush
 @endsection
