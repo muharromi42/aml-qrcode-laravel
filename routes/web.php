@@ -3,7 +3,9 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JenisBarangController;
+use App\Http\Controllers\MerkController;
 use App\Http\Controllers\QrcodeController;
+use App\Http\Controllers\SatuanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +26,5 @@ Route::get('/', function () {
 Route::resource('dashboard', DashboardController::class);
 Route::resource('qrcode', QrcodeController::class);
 Route::resource('jenisbarang', JenisBarangController::class);
+Route::resource('merk', MerkController::class);
+Route::resource('satuan', SatuanController::class);

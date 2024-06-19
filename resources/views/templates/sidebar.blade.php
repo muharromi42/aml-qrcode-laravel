@@ -55,7 +55,7 @@
                     </li>
 
                     <li
-                        class="sidebar-item  has-sub {{ Request::routeIs('baju.index') || Request::routeIs('celana.index') || Request::routeIs('sepatu.index') || Request::routeIs('makeup.index') ? 'active' : '' }}">
+                        class="sidebar-item  has-sub {{ Request::routeIs('jenisbarang.index') || Request::routeIs('merk.index') || Request::routeIs('satuan.index') || Request::routeIs('barang.index') ? 'active' : '' }}">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-box-seam"></i>
                             <span>Stok Barang</span>
@@ -68,13 +68,13 @@
 
                             </li>
 
-                            <li class="submenu-item  {{ Request::routeIs('celana.index') ? 'active' : '' }}">
-                                <a href="component-alert.html" class="submenu-link">Celana</a>
+                            <li class="submenu-item  {{ Request::routeIs('merk.index') ? 'active' : '' }}">
+                                <a href="{{ route('merk.index') }}" class="submenu-link">Merk</a>
 
                             </li>
 
-                            <li class="submenu-item  {{ Request::routeIs('sepatu.index') ? 'active' : '' }}">
-                                <a href="component-badge.html" class="submenu-link">Sepatu</a>
+                            <li class="submenu-item  {{ Request::routeIs('satuan.index') ? 'active' : '' }}">
+                                <a href="{{ route('satuan.index') }}" class="submenu-link">Satuan</a>
 
                             </li>
 

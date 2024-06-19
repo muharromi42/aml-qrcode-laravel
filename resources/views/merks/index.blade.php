@@ -16,20 +16,19 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        Jenis Barang
+                        Merk Barang
                     </h3>
                 </div>
                 <div class="card-body">
-                    <button class="btn rounded-pill btn-success m-2" data-bs-toggle="modal"
-                        data-bs-target="#tambahjenisbarang">
-                        Tambah Jenis Barang
+                    <button class="btn rounded-pill btn-success m-2" data-bs-toggle="modal" data-bs-target="#tambahmerkbarang">
+                        Tambah Merk Barang
                     </button>
                     <div class="table-responsive">
                         <table class="table" id="table-1" width="100%">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Kategori Barang</th>
+                                    <th>Merk Barang</th>
                                     <th>Catatan</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -45,7 +44,7 @@
         </section>
         <!-- Basic Tables end -->
     </div>
-    @include('jenisbarangs.create')
+    @include('merks.create')
     {{-- @include('jenisbarangs.edit') --}}
 
     @push('scripts')
@@ -55,15 +54,15 @@
                     processing: true,
                     serverSide: true,
                     scrollX: true,
-                    ajax: "{{ route('jenisbarang.index') }}",
+                    ajax: "{{ route('merk.index') }}",
                     columns: [{
                             data: 'DT_RowIndex',
                             name: 'DT_RowIndex',
                             searchable: false
                         },
                         {
-                            data: 'kategori',
-                            name: 'kategori'
+                            data: 'merk',
+                            name: 'merk'
                         },
                         {
                             data: 'catatan',

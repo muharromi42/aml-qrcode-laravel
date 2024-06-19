@@ -7,10 +7,10 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>Edit jenis barang</h2>
+                    <h2>Edit merk barang</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('jenisbarang.index') }}"> Kembali</a>
+                    <a class="btn btn-primary" href="{{ route('merk.index') }}"> Kembali</a>
                 </div>
             </div>
         </div>
@@ -20,12 +20,12 @@
                 <div class="col-md-6 col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Jenis Barang</h4>
+                            <h4 class="card-title">merk Barang</h4>
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form form-horizontal"
-                                    action="{{ route('jenisbarang.update', $jenis_barang->id) }}"" method="POST">
+                                <form class="form form-horizontal" action="{{ route('merk.update', $merk->id) }}""
+                                    method="POST">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-body">
@@ -34,15 +34,15 @@
                                                 <label for="first-name-horizontal">Kategori : </label>
                                             </div>
                                             <div class="col-md-8 form-group">
-                                                <input type="text" id="kategori" value="{{ $jenis_barang->kategori }}"
-                                                    class="form-control" name="kategori" placeholder="kategori">
+                                                <input type="text" id="merk" value="{{ $merk->merk }}"
+                                                    class="form-control" name="merk" placeholder="merk">
                                             </div>
                                             <div class="col-md-4">
                                                 <label for="email-horizontal">Catatan : </label>
                                             </div>
                                             <div class="col-md-8 form-group">
-                                                <input type="text" id="catatan" value="{{ $jenis_barang->catatan }}"
-                                                    class="form-control" name="catatan" placeholder="kategori">
+                                                <input type="text" id="catatan" value="{{ $merk->catatan }}"
+                                                    class="form-control" name="catatan" placeholder="catatan">
                                             </div>
                                             <div class="col-sm-12 d-flex justify-content-end">
                                                 <button type="submit" class="btn btn-primary me-1 mb-1">Edit</button>
