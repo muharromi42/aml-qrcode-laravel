@@ -42,7 +42,8 @@
                                             </div>
                                             <div class="col-md-8 form-group">
                                                 <input type="text" id="kode_barang" value="{{ $barang->kode_barang }}"
-                                                    class="form-control" name="kode_barang" placeholder="kode barang">
+                                                    class="form-control" name="kode_barang" placeholder="kode barang"
+                                                    readonly>
                                             </div>
                                             <div class="col-md-4">
                                                 <label for="email-horizontal">Kategori : </label>

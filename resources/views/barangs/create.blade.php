@@ -17,11 +17,6 @@
                                     <input id="nama_barang" type="text" name="nama_barang" placeholder="Nama Barang"
                                         class="form-control">
                                 </div>
-                                <label for="kode_barang">kode barang: </label>
-                                <div class="form-group">
-                                    <input id="kode_barang" type="text" name="kode_barang" placeholder="kode barang"
-                                        class="form-control">
-                                </div>
                                 <label for="kategori">Kategori: </label>
                                 <div class="form-group">
                                     <input id="kategori" type="text" name="kategori" placeholder="kategori"

@@ -56,9 +56,12 @@ class BarangController extends Controller
             'jumlah' => 'nullable|string|max:255',
         ]);
 
+        // memanggil fungsi generate kode barang
+        $kode_barang = $this->generateKodeBarang();
+
         barangModel::create([
             'nama_barang' => $request->nama_barang,
-            'kode_barang' => $request->kode_barang,
+            'kode_barang' => $kode_barang,
             'id_jenisbarang' => $request->kategori,
             'id_merk' => $request->merk,
             'id_satuan' => $request->satuan,
@@ -93,7 +96,6 @@ class BarangController extends Controller
         // Validasi input
         $request->validate([
             'nama_barang' => 'required|string|max:255',
-            'kode_barang' => 'nullable|string|max:255',
             'kategori' => 'nullable|string|max:255',
             'merk' => 'nullable|string|max:255',
             'satuan' => 'nullable|string|max:255',
@@ -105,7 +107,6 @@ class BarangController extends Controller
 
         // Update item dengan data yang baru
         $barang->nama_barang = $request->input('nama_barang');
-        $barang->kode_barang = $request->input('kode_barang');
         $barang->id_jenisbarang = $request->input('kategori');
         $barang->id_merk = $request->input('merk');
         $barang->id_satuan = $request->input('satuan');
@@ -125,5 +126,24 @@ class BarangController extends Controller
         $barang->delete();
 
         return redirect()->route('barang.index')->with('success', 'data barang berhasil di hapus');
+    }
+
+    // fungsi generate kode barang BRG-001 dan seterusnya
+    public function generateKodeBarang()
+    {
+        // Ambil kode barang terakhir yang ada di database
+        $lastBarang = barangModel::orderBy('id_barang', 'desc')->first();
+
+        // Jika belum ada data, mulai dari BRG-001
+        if (!$lastBarang) {
+            return 'BRG-001';
+        }
+
+        // Ambil kode barang terakhir dan increment
+        $lastKode = $lastBarang->kode_barang;
+        $lastNumber = (int) substr($lastKode, 4);
+        $newNumber = str_pad($lastNumber + 1, 3, '0', STR_PAD_LEFT);
+
+        return 'BRG-' . $newNumber;
     }
 }
