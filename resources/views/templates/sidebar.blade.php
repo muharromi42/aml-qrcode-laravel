@@ -78,8 +78,8 @@
 
                             </li>
 
-                            <li class="submenu-item  {{ Request::routeIs('makeup.index') ? 'active' : '' }}">
-                                <a href="component-breadcrumb.html" class="submenu-link">Make Up</a>
+                            <li class="submenu-item  {{ Request::routeIs('barang.index') ? 'active' : '' }}">
+                                <a href="{{ route('barang.index') }}" class="submenu-link">Barang</a>
 
                             </li>
 

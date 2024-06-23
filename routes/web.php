@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\MerkController;
@@ -28,3 +28,4 @@ Route::resource('qrcode', QrcodeController::class);
 Route::resource('jenisbarang', JenisBarangController::class);
 Route::resource('merk', MerkController::class);
 Route::resource('satuan', SatuanController::class);
+Route::resource('barang', BarangController::class);
