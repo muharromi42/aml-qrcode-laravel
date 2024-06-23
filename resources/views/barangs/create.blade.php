@@ -17,21 +17,34 @@
                                     <input id="nama_barang" type="text" name="nama_barang" placeholder="Nama Barang"
                                         class="form-control">
                                 </div>
-                                <label for="kategori">Kategori: </label>
-                                <div class="form-group">
-                                    <input id="kategori" type="text" name="kategori" placeholder="kategori"
-                                        class="form-control">
-                                </div>
-                                <label for="merk">Merk: </label>
-                                <div class="form-group">
-                                    <input id="merk" type="text" name="merk" placeholder="merk"
-                                        class="form-control">
-                                </div>
-                                <label for="satuan">Satuan: </label>
-                                <div class="form-group">
-                                    <input id="satuan" type="text" name="satuan" placeholder="Satuan"
-                                        class="form-control">
-                                </div>
+                                <label for="id_jenisbarang">Jenis Barang</label>
+                                <select name="id_jenisbarang" id="id_jenisbarang" class="form-control">
+                                    <option value="">Pilih Jenis Barang</option>
+                                    @foreach ($jenis_barangs as $jenis_barang)
+                                        <option value="{{ $jenis_barang->id }}"
+                                            {{ isset($barang) && $barang->id_jenisbarang == $jenis_barang->id ? 'selected' : '' }}>
+                                            {{ $jenis_barang->kategori }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="id_merk">Merk</label>
+                                <select name="id_merk" id="id_merk" class="form-control">
+                                    <option value="">Pilih Merk</option>
+                                    @foreach ($merks as $merk)
+                                        <option value="{{ $merk->id }}"
+                                            {{ isset($barang) && $barang->id_merk == $merk->id ? 'selected' : '' }}>
+                                            {{ $merk->merk }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="id_satuan">Satuan</label>
+                                <select name="id_satuan" id="id_satuan" class="form-control">
+                                    <option value="">Pilih Satuan</option>
+                                    @foreach ($satuans as $satuan)
+                                        <option value="{{ $satuan->id }}"
+                                            {{ isset($barang) && $barang->id_satuan == $satuan->id ? 'selected' : '' }}>
+                                            {{ $satuan->satuan }}</option>
+                                    @endforeach
+                                </select>
+
                                 <label for="jumlah">Jumlah barang: </label>
                                 <div class="form-group">
                                     <input id="jumlah" type="text" name="jumlah" placeholder="Jumlah barang"

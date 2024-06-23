@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\barangModel;
+use App\Models\jenisBarangModel;
+use App\Models\merkModel;
+use App\Models\satuanModel;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -31,7 +34,10 @@ class BarangController extends Controller
                 })
                 ->rawColumns(['action'])->make(true);
         }
-        return view('barangs.index');
+        $jenis_barangs = jenisBarangModel::all();
+        $merks = merkModel::all();
+        $satuans = satuanModel::all();
+        return view('barangs.index', compact('jenis_barangs', 'merks', 'satuans'));
     }
 
     /**
@@ -39,7 +45,6 @@ class BarangController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -50,9 +55,9 @@ class BarangController extends Controller
         $request->validate([
             'nama_barang' => 'required|string|max:255',
             'kode_barang' => 'nullable|string|max:255',
-            'kategori' => 'nullable|string|max:255',
-            'merk' => 'nullable|string|max:255',
-            'satuan' => 'nullable|string|max:255',
+            'id_jenisbarang' => 'nullable|exists:tbl_jenisbarang,id',
+            'id_merk' => 'nullable|exists:tbl_merk,id',
+            'id_satuan' => 'nullable|exists:tbl_satuan,id',
             'jumlah' => 'nullable|string|max:255',
         ]);
 
@@ -62,9 +67,9 @@ class BarangController extends Controller
         barangModel::create([
             'nama_barang' => $request->nama_barang,
             'kode_barang' => $kode_barang,
-            'id_jenisbarang' => $request->kategori,
-            'id_merk' => $request->merk,
-            'id_satuan' => $request->satuan,
+            'id_jenisbarang' => $request->id_jenisbarang,
+            'id_merk' => $request->id_merk,
+            'id_satuan' => $request->id_satuan,
             'jumlah' => $request->jumlah,
         ]);
 

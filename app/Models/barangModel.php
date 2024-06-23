@@ -18,4 +18,19 @@ class barangModel extends Model
         'id_satuan',
         'jumlah',
     ];
+
+    public function jenis_barang()
+    {
+        return $this->belongsTo(jenisBarangModel::class, 'id_jenisbarang');
+    }
+
+    public function merk()
+    {
+        return $this->belongsTo(merkModel::class, 'id_merk');
+    }
+
+    public function satuan()
+    {
+        return $this->belongsTo(SatuanModel::class, 'satuan_id');
+    }
 }
