@@ -38,9 +38,9 @@ class JenisBarangController extends Controller
                     $editButton = '  <a class="btn btn-primary" href="' . route('jenisbarang.edit', $row->id) . '">Edit</a> ';
                     $deleteButton = '
                 <form action="' . route('jenisbarang.destroy', $row->id) . '"
-                method="POST" style="display:inline;">
+                method="POST" style="display:inline;"  class="delete-form">
                 ' . csrf_field() . method_field('DELETE') . '
-                <button type="submit" class="btn btn-danger">Delete</button>
+                <button type="submit" class="btn btn-danger delete-button">Delete</button>
                 </form>
             ';
                     return $editButton . ' ' . $deleteButton;

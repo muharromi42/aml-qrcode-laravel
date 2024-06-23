@@ -96,6 +96,26 @@
                         }
                     ]
                 });
+
+                // menambahkan sweetalert2 untuk konfirmasi delete button
+                $('#table-1').on('click', '.delete-button', function(event) {
+                    event.preventDefault();
+                    var form = $(this).closest('form');
+                    Swal.fire({
+                        title: 'Yakin?',
+                        text: "Kamu tidak bisa mengulangnya lagi!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: "Batal",
+                        confirmButtonText: 'Ya, hapus data ini!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
+                });
             });
 
             @if (session('success'))
@@ -106,6 +126,7 @@
                     confirmButtonText: 'OK'
                 });
             @endif
+
 
             // $('#table-1').on('click', '.edit-btn', function() {
             //     var id = $(this).data('id');

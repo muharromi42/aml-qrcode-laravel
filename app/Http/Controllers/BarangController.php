@@ -22,9 +22,9 @@ class BarangController extends Controller
                     $editButton = '  <a class="btn btn-primary" href="' . route('barang.edit', $row->id_barang) . '">Edit</a> ';
                     $deleteButton = '
                 <form action="' . route('barang.destroy', $row->id_barang) . '"
-                method="POST" style="display:inline;">
+                method="POST" style="display:inline;"  class="delete-form">
                 ' . csrf_field() . method_field('DELETE') . '
-                <button type="submit" class="btn btn-danger">Delete</button>
+                <button type="submit" class="btn btn-danger delete-button">Delete</button>
                 </form>
             ';
                     return $editButton . ' ' . $deleteButton;
