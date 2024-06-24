@@ -18,6 +18,7 @@ class BarangController extends Controller
     {
         if ($request->ajax()) {
             $query_data = new barangModel();
+            // $data = barangModel::with(['merk', 'jenisBarang', 'satuan'])->get();
             $data = $query_data::all();
             return DataTables::of($data)
                 ->addIndexColumn()
@@ -31,6 +32,16 @@ class BarangController extends Controller
                 </form>
             ';
                     return $editButton . ' ' . $deleteButton;
+                })
+                // fungsi mengubah id jadi nama item
+                ->editColumn('id_merk', function ($row) {
+                    return $row->merk ? $row->merk->merk : 'N/A';
+                })
+                ->editColumn('id_jenisbarang', function ($row) {
+                    return $row->jenis_barang ? $row->jenis_barang->kategori : 'N/A';
+                })
+                ->editColumn('id_satuan', function ($row) {
+                    return $row->satuan ? $row->satuan->satuan : 'N/A';
                 })
                 ->rawColumns(['action'])->make(true);
         }
@@ -90,7 +101,10 @@ class BarangController extends Controller
     public function edit(string $id)
     {
         $barang = barangModel::findOrFail($id);
-        return view('barangs.edit', compact('barang'));
+        $jenis_barangs = jenisBarangModel::all();
+        $merks = merkModel::all();
+        $satuans = satuanModel::all();
+        return view('barangs.edit', compact('barang', 'jenis_barangs', 'merks', 'satuans'));
     }
 
     /**
@@ -101,9 +115,10 @@ class BarangController extends Controller
         // Validasi input
         $request->validate([
             'nama_barang' => 'required|string|max:255',
-            'kategori' => 'nullable|string|max:255',
-            'merk' => 'nullable|string|max:255',
-            'satuan' => 'nullable|string|max:255',
+            'kode_barang' => 'nullable|string|max:255',
+            'id_jenisbarang' => 'nullable|exists:tbl_jenisbarang,id',
+            'id_merk' => 'nullable|exists:tbl_merk,id',
+            'id_satuan' => 'nullable|exists:tbl_satuan,id',
             'jumlah' => 'nullable|string|max:255',
         ]);
 
@@ -112,9 +127,9 @@ class BarangController extends Controller
 
         // Update item dengan data yang baru
         $barang->nama_barang = $request->input('nama_barang');
-        $barang->id_jenisbarang = $request->input('kategori');
-        $barang->id_merk = $request->input('merk');
-        $barang->id_satuan = $request->input('satuan');
+        $barang->id_jenisbarang = $request->input('id_jenisbarang');
+        $barang->id_merk = $request->input('id_merk');
+        $barang->id_satuan = $request->input('id_satuan');
         $barang->jumlah = $request->input('jumlah');
         $barang->save();
 

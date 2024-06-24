@@ -49,22 +49,37 @@
                                                 <label for="email-horizontal">Kategori : </label>
                                             </div>
                                             <div class="col-md-8 form-group">
-                                                <input type="text" id="kategori" value="{{ $barang->id_jenisbarang }}"
-                                                    class="form-control" name="kategori" placeholder="Kategori barang">
+                                                <select class="form-select" id="id_jenisbarang" name="id_jenisbarang">
+                                                    @foreach ($jenis_barangs as $jenisbarang)
+                                                        <option value="{{ $jenisbarang->id }}"
+                                                            {{ $barang->id_jenisbarang == $jenisbarang->id ? 'selected' : '' }}>
+                                                            {{ $jenisbarang->kategori }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="col-md-4">
                                                 <label for="email-horizontal">Merk : </label>
                                             </div>
                                             <div class="col-md-8 form-group">
-                                                <input type="text" id="merk" value="{{ $barang->id_merk }}"
-                                                    class="form-control" name="merk" placeholder="Merk barang">
+                                                <select class="form-select" id="id_merk" name="id_merk">
+                                                    @foreach ($merks as $merk)
+                                                        <option value="{{ $merk->id }}"
+                                                            {{ $barang->id_merk == $merk->id ? 'selected' : '' }}>
+                                                            {{ $merk->merk }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="col-md-4">
                                                 <label for="email-horizontal">Satuan : </label>
                                             </div>
                                             <div class="col-md-8 form-group">
-                                                <input type="text" id="satuan" value="{{ $barang->id_satuan }}"
-                                                    class="form-control" name="satuan" placeholder="satuan barang">
+                                                <select class="form-select" id="id_satuan" name="id_satuan">
+                                                    @foreach ($satuans as $satuan)
+                                                        <option value="{{ $satuan->id }}"
+                                                            {{ $barang->id_satuan == $satuan->id ? 'selected' : '' }}>
+                                                            {{ $satuan->satuan }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="col-md-4">
                                                 <label for="email-horizontal">Jumlah Barang : </label>

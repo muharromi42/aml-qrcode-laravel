@@ -31,6 +31,6 @@ class barangModel extends Model
 
     public function satuan()
     {
-        return $this->belongsTo(SatuanModel::class, 'satuan_id');
+        return $this->belongsTo(SatuanModel::class, 'id_satuan');
     }
 }

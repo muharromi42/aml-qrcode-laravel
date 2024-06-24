@@ -4,7 +4,7 @@
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="myModalLabel33">Tambah Merk Barang </h4>
+                            <h4 class="modal-title" id="myModalLabel33">Tambah Barang </h4>
                             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                 <i data-feather="x"></i>
                             </button>
@@ -18,32 +18,40 @@
                                         class="form-control">
                                 </div>
                                 <label for="id_jenisbarang">Jenis Barang</label>
-                                <select name="id_jenisbarang" id="id_jenisbarang" class="form-control">
-                                    <option value="">Pilih Jenis Barang</option>
-                                    @foreach ($jenis_barangs as $jenis_barang)
-                                        <option value="{{ $jenis_barang->id }}"
-                                            {{ isset($barang) && $barang->id_jenisbarang == $jenis_barang->id ? 'selected' : '' }}>
-                                            {{ $jenis_barang->kategori }}</option>
-                                    @endforeach
-                                </select>
+                                <div class="form-group">
+                                    <select name="id_jenisbarang" id="id_jenisbarang" class="form-control">
+                                        <option value="">Pilih Jenis Barang</option>
+                                        @foreach ($jenis_barangs as $jenis_barang)
+                                            <option value="{{ $jenis_barang->id }}"
+                                                {{ isset($barang) && $barang->id_jenisbarang == $jenis_barang->id ? 'selected' : '' }}>
+                                                {{ $jenis_barang->kategori }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
                                 <label for="id_merk">Merk</label>
-                                <select name="id_merk" id="id_merk" class="form-control">
-                                    <option value="">Pilih Merk</option>
-                                    @foreach ($merks as $merk)
-                                        <option value="{{ $merk->id }}"
-                                            {{ isset($barang) && $barang->id_merk == $merk->id ? 'selected' : '' }}>
-                                            {{ $merk->merk }}</option>
-                                    @endforeach
-                                </select>
-                                <label for="id_satuan">Satuan</label>
-                                <select name="id_satuan" id="id_satuan" class="form-control">
-                                    <option value="">Pilih Satuan</option>
-                                    @foreach ($satuans as $satuan)
-                                        <option value="{{ $satuan->id }}"
-                                            {{ isset($barang) && $barang->id_satuan == $satuan->id ? 'selected' : '' }}>
-                                            {{ $satuan->satuan }}</option>
-                                    @endforeach
-                                </select>
+                                <div class="form-group">
+                                    <select name="id_merk" id="id_merk" class="form-control">
+                                        <option value="">Pilih Merk</option>
+                                        @foreach ($merks as $merk)
+                                            <option value="{{ $merk->id }}"
+                                                {{ isset($barang) && $barang->id_merk == $merk->id ? 'selected' : '' }}>
+                                                {{ $merk->merk }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="id_satuan">Satuan</label>
+                                    <select name="id_satuan" id="id_satuan" class="form-control">
+                                        <option value="">Pilih Satuan</option>
+                                        @foreach ($satuans as $satuan)
+                                            <option value="{{ $satuan->id }}"
+                                                {{ isset($barang) && $barang->id_satuan == $satuan->id ? 'selected' : '' }}>
+                                                {{ $satuan->satuan }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
                                 <label for="jumlah">Jumlah barang: </label>
                                 <div class="form-group">
