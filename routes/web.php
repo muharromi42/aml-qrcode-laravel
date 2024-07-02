@@ -29,3 +29,4 @@ Route::resource('jenisbarang', JenisBarangController::class);
 Route::resource('merk', MerkController::class);
 Route::resource('satuan', SatuanController::class);
 Route::resource('barang', BarangController::class);
+Route::get('test', fn () => phpinfo());

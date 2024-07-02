@@ -33,4 +33,9 @@ class barangModel extends Model
     {
         return $this->belongsTo(SatuanModel::class, 'id_satuan');
     }
+
+    public function qr_code()
+    {
+        return $this->hasOne(qrCodeModel::class, 'barang_id');
+    }
 }

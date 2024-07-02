@@ -10,7 +10,7 @@
                     </h3>
                 </div>
                 <div class="card-body">
-                    <button class="btn rounded-pill btn-success m-2">
+                    <button class="btn rounded-pill btn-success m-2" data-bs-toggle="modal" data-bs-target="#tambahqrcode">
                         Tambah data qrcode
                     </button>
                     <div class="table-responsive">
@@ -35,4 +35,5 @@
         </section>
         <!-- Basic Tables end -->
     </div>
+    @include('qrcodes.create')
 @endsection
