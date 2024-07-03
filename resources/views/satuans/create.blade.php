@@ -20,7 +20,7 @@
                                 <label for="catatan">Catatan: </label>
                                 <div class="form-group">
                                     <input id="catatan" type="text" name="catatan" placeholder="Catatan"
-                                        class="form-control">
+                                        class="form-control" value="-">
                                 </div>
                             </div>
                             <div class="modal-footer">

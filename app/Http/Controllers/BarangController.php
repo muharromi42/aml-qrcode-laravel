@@ -84,7 +84,7 @@ class BarangController extends Controller
             'jumlah' => $request->jumlah,
         ]);
 
-        return redirect()->back()->with('success', 'Merk Barang berhasil ditambahkan.');
+        return redirect()->back()->with('success', 'Data Barang berhasil ditambahkan.');
     }
 
     /**
