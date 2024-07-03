@@ -36,6 +36,6 @@ class barangModel extends Model
 
     public function qr_code()
     {
-        return $this->hasOne(qrCodeModel::class, 'barang_id');
+        return $this->hasOne(qrCodeModel::class, 'id_barang');
     }
 }

@@ -12,8 +12,9 @@ class qrCodeModel extends Model
     protected $table = 'tbl_qr_code';
 
     protected $guarded = ['id'];
+
     public function barang()
     {
-        return $this->belongsTo(barangModel::class, 'barang_id');
+        return $this->belongsTo(barangModel::class, 'id_barang');
     }
 }
