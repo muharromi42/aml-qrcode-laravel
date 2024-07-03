@@ -34,6 +34,21 @@
 
         </section>
         <!-- Basic Tables end -->
+        <!-- Modal Bootstrap untuk menampilkan gambar QR Code -->
+        <div class="modal fade" id="modalGambar" tabindex="-1" aria-labelledby="modalGambarLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalGambarLabel">Gambar QR Code</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img id="gambarModal" src="" alt="Gambar QR Code" style="width: 250px" height="auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     @include('qrcodes.create')
 
@@ -41,6 +56,13 @@
     @push('scripts')
         <script type="text/javascript">
             $(function() {
+                // Event handler untuk memasukkan gambar QR Code ke dalam modal saat diklik
+                $('#table-1').on('click', 'img[data-toggle="modal"]', function() {
+                    var src = $(this).attr('src');
+                    $('#gambarModal').attr('src', src);
+                    $('#modalGambar').modal('show');
+                });
+                // datatable
                 var table = $('#table-1').DataTable({
                     processing: true,
                     serverSide: true,
@@ -64,11 +86,24 @@
                             name: 'qr_code_data',
                             render: function(data, type, full, meta) {
                                 return '<img src="data:image/png;base64,' + data +
-                                    '" alt="QR Code" style="width: 100px; height: auto;">';
+                                    '" alt="QR Code" style="width: 100px; height: auto;" ' +
+                                    'data-toggle="modal" data-target="#modalGambar">';
                             },
                             orderable: false,
                             searchable: false
                         },
+                        // ini fungsi pop up qr kecil
+                        // {
+                        //     data: 'qr_code_data',
+                        //     name: 'qr_code_data',
+                        //     render: function(data, type, full, meta) {
+                        //         return '<img src="data:image/png;base64,' + data +
+                        //             '" alt="QR Code" style="width: 100px; height: auto;" data-qrcode="' +
+                        //             data + '">';
+                        //     },
+                        //     orderable: false,
+                        //     searchable: false
+                        // },
                         {
                             data: 'action',
                             name: 'action',
@@ -77,6 +112,20 @@
                         }
                     ]
                 });
+
+
+                // Menangani klik pada gambar QR Code untuk memperbesar
+                // $('#table-1').on('click', 'img[data-qrcode]', function() {
+                //     var qrcodeData = $(this).data('qrcode');
+                //     // Tampilkan modal Bootstrap dengan gambar QR Code yang lebih besar
+                //     Swal.fire({
+                //         imageUrl: 'data:image/png;base64,' + qrcodeData,
+                //         imageAlt: 'QR Code',
+                //         showCloseButton: true,
+                //         showConfirmButton: false
+                //     });
+                // });
+
                 // menambahkan sweetalert2 untuk konfirmasi delete button
                 $('#table-1').on('click', '.delete-button', function(event) {
                     event.preventDefault();
