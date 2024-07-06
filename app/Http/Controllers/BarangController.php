@@ -166,4 +166,25 @@ class BarangController extends Controller
 
         return 'BRG-' . $newNumber;
     }
+
+    // public function addQuantity(Request $request)
+    // {
+    //     $request->validate([
+    //         'kode_barang' => 'required|string|max:255',
+    //         'jumlah_tambahan' => 'required|integer|min:1',
+    //     ]);
+
+    //     try {
+    //         // Temukan barang berdasarkan kode_barang
+    //         $barang = barangModel::where('kode_barang', $request->kode_barang)->firstOrFail();
+
+    //         // Tambahkan jumlah barang
+    //         $barang->jumlah += $request->jumlah_tambahan;
+    //         $barang->save();
+
+    //         return response()->json(['message' => 'Jumlah barang berhasil ditambahkan'], 200);
+    //     } catch (\Exception $e) {
+    //         return response()->json(['message' => 'Gagal menambahkan jumlah barang'], 500);
+    //     }
+    // }
 }
