@@ -46,8 +46,8 @@
                 <ul class="menu">
                     <li class="sidebar-title">Menu</li>
 
-                    <li class="sidebar-item {{ Request::routeIs('dashboard.index') ? 'active' : '' }} ">
-                        <a href="{{ route('dashboard.index') }}" class='sidebar-link'>
+                    <li class="sidebar-item {{ Request::routeIs('dashboard') ? 'active' : '' }} ">
+                        <a href="{{ route('dashboard') }}" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
                             <span>Dashboard</span>
                         </a>
@@ -118,7 +118,7 @@
                         <ul class="submenu ">
 
                             <li class="submenu-item  ">
-                                <a href="account-profile.html" class="submenu-link">
+                                <a href="{{ route('users.index') }}" class="submenu-link">
                                     <i class="bi bi-person-add"></i>
                                     <span>Tambah Users</span>
                                 </a>
@@ -126,7 +126,7 @@
                             </li>
 
                             <li class="submenu-item  ">
-                                <a href="account-security.html" class="submenu-link">
+                                <a href="{{ route('roles.index') }}" class="submenu-link">
                                     <i class="bi bi-person-gear"></i>
                                     <span>Tambah Roles</span>
                                 </a>
@@ -134,6 +134,15 @@
                             </li>
 
                         </ul>
+                    </li>
+
+                    <li class="sidebar-item  button button-danger">
+                        <a href="{{ route('logout') }}" class='sidebar-link text-danger'>
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>Log Out</span>
+                        </a>
+
+
                     </li>
 
 

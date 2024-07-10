@@ -43,14 +43,6 @@
                                     @endif
                                 </div>
 
-                                {{-- <div class="checkbox form-group">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="">
-                                    <label class="form-check-label" for="">
-                                        Remember me
-                                    </label>
-                                </div>
-                            </div> --}}
 
                                 <div class="form-group mt-5 mb-5">
                                     <button type="submit" class="_btn_04">Login</button>
