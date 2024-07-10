@@ -55,86 +55,93 @@
 
                     </li>
 
-                    <li
-                        class="sidebar-item  has-sub {{ Request::routeIs('jenisbarang.index') || Request::routeIs('merk.index') || Request::routeIs('satuan.index') || Request::routeIs('barang.index') ? 'active' : '' }}">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-box-seam"></i>
-                            <span>Stok Barang</span>
-                        </a>
+                    @can('barang-create')
+                        <li
+                            class="sidebar-item  has-sub {{ Request::routeIs('jenisbarang.index') || Request::routeIs('merk.index') || Request::routeIs('satuan.index') || Request::routeIs('barang.index') ? 'active' : '' }}">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-box-seam"></i>
+                                <span>Stok Barang</span>
+                            </a>
 
-                        <ul class="submenu ">
+                            <ul class="submenu ">
 
-                            <li class="submenu-item  {{ Request::routeIs('jenisbarang.index') ? 'active' : '' }}">
-                                <a href="{{ route('jenisbarang.index') }}" class="submenu-link">Jenis Barang</a>
+                                <li class="submenu-item  {{ Request::routeIs('jenisbarang.index') ? 'active' : '' }}">
+                                    <a href="{{ route('jenisbarang.index') }}" class="submenu-link">Jenis Barang</a>
 
-                            </li>
+                                </li>
 
-                            <li class="submenu-item  {{ Request::routeIs('merk.index') ? 'active' : '' }}">
-                                <a href="{{ route('merk.index') }}" class="submenu-link">Merk</a>
+                                <li class="submenu-item  {{ Request::routeIs('merk.index') ? 'active' : '' }}">
+                                    <a href="{{ route('merk.index') }}" class="submenu-link">Merk</a>
 
-                            </li>
+                                </li>
 
-                            <li class="submenu-item  {{ Request::routeIs('satuan.index') ? 'active' : '' }}">
-                                <a href="{{ route('satuan.index') }}" class="submenu-link">Satuan</a>
+                                <li class="submenu-item  {{ Request::routeIs('satuan.index') ? 'active' : '' }}">
+                                    <a href="{{ route('satuan.index') }}" class="submenu-link">Satuan</a>
 
-                            </li>
+                                </li>
 
-                            <li class="submenu-item  {{ Request::routeIs('barang.index') ? 'active' : '' }}">
-                                <a href="{{ route('barang.index') }}" class="submenu-link">Barang</a>
+                                <li class="submenu-item  {{ Request::routeIs('barang.index') ? 'active' : '' }}">
+                                    <a href="{{ route('barang.index') }}" class="submenu-link">Barang</a>
 
-                            </li>
-
-
-                        </ul>
+                                </li>
 
 
-                    </li>
-
-                    <li class="sidebar-item  {{ Request::routeIs('cetak.index') ? 'active' : '' }}">
-                        <a href="{{ route('cetak.index') }}" class='sidebar-link'>
-                            <i class="bi bi-collection-fill"></i>
-                            <span>Cetak Data Barang</span>
-                        </a>
+                            </ul>
 
 
-                    </li>
+                        </li>
+                    @endcan
 
-                    <li class="sidebar-item {{ Request::routeIs('qrcode.index') ? 'active' : '' }}">
-                        <a href="{{ route('qrcode.index') }}" class='sidebar-link'>
-                            <i class="bi bi-qr-code-scan"></i>
-                            <span>Generate Qr Code</span>
-                        </a>
+                    @can('barang-print')
+                        <li class="sidebar-item  {{ Request::routeIs('cetak.index') ? 'active' : '' }}">
+                            <a href="{{ route('cetak.index') }}" class='sidebar-link'>
+                                <i class="bi bi-collection-fill"></i>
+                                <span>Cetak Data Barang</span>
+                            </a>
 
 
-                    </li>
+                        </li>
+                    @endcan
+
+                    @can('qr-print')
+                        <li class="sidebar-item {{ Request::routeIs('qrcode.index') ? 'active' : '' }}">
+                            <a href="{{ route('qrcode.index') }}" class='sidebar-link'>
+                                <i class="bi bi-qr-code-scan"></i>
+                                <span>Generate Qr Code</span>
+                            </a>
 
 
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-person-circle"></i>
-                            <span>Account</span>
-                        </a>
+                        </li>
+                    @endcan
 
-                        <ul class="submenu ">
+                    @can('role-list')
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-person-circle"></i>
+                                <span>Account</span>
+                            </a>
 
-                            <li class="submenu-item  ">
-                                <a href="{{ route('users.index') }}" class="submenu-link">
-                                    <i class="bi bi-person-add"></i>
-                                    <span>Tambah Users</span>
-                                </a>
+                            <ul class="submenu ">
 
-                            </li>
+                                <li class="submenu-item  ">
+                                    <a href="{{ route('users.index') }}" class="submenu-link">
+                                        <i class="bi bi-person-add"></i>
+                                        <span>Tambah Users</span>
+                                    </a>
 
-                            <li class="submenu-item  ">
-                                <a href="{{ route('roles.index') }}" class="submenu-link">
-                                    <i class="bi bi-person-gear"></i>
-                                    <span>Tambah Roles</span>
-                                </a>
+                                </li>
 
-                            </li>
+                                <li class="submenu-item  ">
+                                    <a href="{{ route('roles.index') }}" class="submenu-link">
+                                        <i class="bi bi-person-gear"></i>
+                                        <span>Tambah Roles</span>
+                                    </a>
 
-                        </ul>
-                    </li>
+                                </li>
+
+                            </ul>
+                        </li>
+                    @endcan
 
                     <li class="sidebar-item  button button-danger">
                         <a href="{{ route('logout') }}" class='sidebar-link text-danger'>
