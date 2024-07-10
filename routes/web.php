@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\CetakController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\MerkController;
@@ -31,8 +32,9 @@ Route::resource('jenisbarang', JenisBarangController::class);
 Route::resource('merk', MerkController::class);
 Route::resource('satuan', SatuanController::class);
 Route::resource('barang', BarangController::class);
+Route::resource('cetak', CetakController::class);
 
-Route::get('barang-pdf', [BarangController::class, 'exportPdf'])->name('barang-pdf');
+Route::get('cetak-pdf', [CetakController::class, 'exportPdf'])->name('barang-pdf');
 // Route::get('qrcode-pdf', [QrcodeController::class, 'exportPdf'])->name('qrcode-pdf');
 
 Route::get('qrcode-pdf/{id}', [QrcodeController::class, 'exportPdf'])->name('qrcode-pdf');

@@ -90,38 +90,11 @@
 
                     </li>
 
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
+                    <li class="sidebar-item  {{ Request::routeIs('cetak.index') ? 'active' : '' }}">
+                        <a href="{{ route('cetak.index') }}" class='sidebar-link'>
                             <i class="bi bi-collection-fill"></i>
                             <span>Cetak Data Barang</span>
                         </a>
-
-                        <ul class="submenu ">
-
-                            <li class="submenu-item  ">
-                                <a href="extra-component-avatar.html" class="submenu-link">
-                                    <i class="fa-solid fa-shirt"></i>
-                                    <span>Baju</span>
-                                </a>
-
-                            </li>
-
-                            <li class="submenu-item  ">
-                                <a href="extra-component-comment.html" class="submenu-link">Celana</a>
-
-                            </li>
-
-                            <li class="submenu-item  ">
-                                <a href="extra-component-divider.html" class="submenu-link">Sepatu</a>
-
-                            </li>
-
-                            <li class="submenu-item  ">
-                                <a href="extra-component-date-picker.html" class="submenu-link">Make Up</a>
-
-                            </li>
-
-                        </ul>
 
 
                     </li>
