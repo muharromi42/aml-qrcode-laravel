@@ -23,10 +23,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::resource('dashboard', DashboardController::class);
 Route::resource('qrcode', QrcodeController::class);
 Route::resource('jenisbarang', JenisBarangController::class);
 Route::resource('merk', MerkController::class);
 Route::resource('satuan', SatuanController::class);
 Route::resource('barang', BarangController::class);
+
+Route::get('barang-pdf', [BarangController::class, 'exportPdf'])->name('barang-pdf');
+// Route::get('qrcode-pdf', [QrcodeController::class, 'exportPdf'])->name('qrcode-pdf');
+
+Route::get('qrcode-pdf/{id}', [QrcodeController::class, 'exportPdf'])->name('qrcode-pdf');
+
+// Route::get('qrcode/export-pdf/{id}', 'QrcodeController@exportPdf')->name('qrcode.exportPdf');
+
 Route::get('test', fn () => phpinfo());

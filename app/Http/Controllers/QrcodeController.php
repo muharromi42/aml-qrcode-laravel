@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\barangModel;
 use App\Models\qrCodeModel;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use PDF;
 use SimpleSoftwareIO\QrCode\Facades\QrCode as QrCodeGenerator;
 
 class QrcodeController extends Controller
@@ -30,7 +33,8 @@ class QrcodeController extends Controller
                 <button type="submit" class="btn btn-danger delete-button">Delete</button>
                 </form>
             ';
-                    return $deleteButton;
+                    $printButton = '<a class="btn btn-info" target="_blank" href="' . route('qrcode-pdf', $row->id) . '">Print QR Code</a>';
+                    return $printButton . '' . $deleteButton;
                     // return $editButton . ' ' . $deleteButton;
                 })
                 // fungsi mengubah id jadi nama item
@@ -125,5 +129,43 @@ class QrcodeController extends Controller
         $qrcode->delete();
 
         return redirect()->route('qrcode.index')->with('success', 'data barang berhasil di hapus');
+    }
+
+    public function exportPdf($id)
+    {
+        // Ambil data QR Code berdasarkan ID
+        $qrcode = qrCodeModel::findOrFail($id);
+
+        // Ambil gambar QR Code dari base64
+        $qrCodeImage = base64_decode($qrcode->qr_code_data);
+
+        // Buat objek DOMPDF
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true); // Aktifkan HTML5 parser jika perlu
+        $dompdf = new Dompdf($options);
+
+        // Mulai rendering dokumen PDF
+        // $html = '<html><body>';
+        // $html .= '<img src="data:image/png;base64,' . base64_encode($qrCodeImage) . '" />';
+        // $html .= '</body></html>';
+        $html = '<html><body>';
+        $html .= '<div style="text-align: center;">'; // Posisikan gambar di tengah halaman
+        $html .= '<img src="data:image/png;base64,' . base64_encode($qrCodeImage) . '" style="width: 100%; max-width: 400px;" />';
+        $html .= '</div>';
+        $html .= '</body></html>';
+
+        $dompdf->loadHtml($html);
+
+        // Atur ukuran dan orientasi halaman
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render PDF (secara default, DOMPDF akan mencoba mengirimkan output ke browser)
+        $dompdf->render();
+
+        // Beri nama file untuk unduhan
+        $filename = 'qrcode_' . $qrcode->id . '.pdf';
+
+        // Unduh file PDF langsung ke browser
+        return $dompdf->stream($filename);
     }
 }
