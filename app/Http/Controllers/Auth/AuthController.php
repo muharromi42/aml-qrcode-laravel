@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\barangModel;
+use App\Models\jenisBarangModel;
+use App\Models\merkModel;
+use App\Models\qrCodeModel;
+use App\Models\satuanModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -62,7 +67,12 @@ class AuthController extends Controller
     public function dashboard()
     {
         if (Auth::check()) {
-            return view('dashboard.index');
+            $totalkategori = jenisBarangModel::count();
+            $totalmerk = merkModel::count();
+            $totalbarang = barangModel::count();
+            $totalqrcode = qrCodeModel::count();
+            $barangs = barangModel::all();
+            return view('dashboard.index', compact('barangs', 'totalbarang', 'totalmerk', 'totalkategori', 'totalqrcode'));
         }
 
         return redirect("login")->withSuccess('Opps!You do not have access');

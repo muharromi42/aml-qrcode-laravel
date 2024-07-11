@@ -39,6 +39,8 @@
     <script src="/template/dist/assets/compiled/js/app.js"></script>
 
 
+    <!-- Memuat Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Need: Apexcharts -->
     <script src="/template/dist/assets/extensions/apexcharts/apexcharts.min.js"></script>
