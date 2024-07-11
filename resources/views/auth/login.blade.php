@@ -21,8 +21,9 @@
                 <div class="col-md-12">
                     <div class="_lk_de">
                         <div class="form-03-main">
-                            <div class="logo" style="margin-top: 100px">
-                                <img src="/logintemplate/assets/images/user.png">
+                            <div class="" style="margin-top: 100px; padding-bottom: 50px">
+                                <img src="/img/logo/pt_anugerah_mega_lestari.png">
+                                {{-- <img src="/logintemplate/assets/images/user.png"> --}}
                             </div>
                             <form action="{{ route('login.post') }}" method="POST">
                                 @csrf
